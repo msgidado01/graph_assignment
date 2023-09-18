@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Graph Assignment</title>
+</head>
+<body>
+	<script>
+		
+		class Graph {
+    constructor() {
+        this.numberOfNodes = 0;
+        this.adjacentList = {};
+    }
+
+    addVertex(node) {
+        this.adjacentList[node] = [];
+        this.numberOfNodes++;
+    }
+
+    addEdge(node1, node2) {
+        // Undirected Graph
+        this.adjacentList[node1].push(node2);
+        this.adjacentList[node2].push(node1);
+    }
+
+    showConnections() {
+        for (const node in this.adjacentList) {
+            const connections = this.adjacentList[node].join(", ");
+            console.log(node + " --> " + connections);
+        }
+    }
+}
+
+const myGraph = new Graph();
+myGraph.addVertex('A');
+myGraph.addVertex('B');
+myGraph.addVertex('C');
+myGraph.addVertex('D');
+myGraph.addVertex('E');
+myGraph.addVertex('F');
+myGraph.addVertex('G');
+myGraph.addEdge('A', 'B');
+myGraph.addEdge('A', 'C');
+myGraph.addEdge('A', 'E');
+myGraph.addEdge('B', 'E');
+myGraph.addEdge('B', 'D');
+myGraph.addEdge('C', 'F');
+myGraph.addEdge('C', 'G');
+myGraph.addEdge('C', 'E');
+
+myGraph.showConnections();
+console.log(myGraph);
+
+	</script>
+</body>
+</html>
